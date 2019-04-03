@@ -50,7 +50,7 @@ compiler.plugin('done', function(stat) {
 
 (node:63533) DeprecationWarning: Tapable.plugin is deprecated. Use new API on .hooks instead
 ```
-这是你可以使用webpack提供了新的API对项目进行监听,给编译项目设置事件钩子，
+这时你可以使用webpack提供了新的API对项目进行监听,给编译项目设置事件钩子，
 生命周期钩子函数由compiler暴露，可以通过
 ```
 compiler.hooks.someHook.tap(...)
