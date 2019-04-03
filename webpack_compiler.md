@@ -61,7 +61,10 @@ compiler.hooks.someHook.tap(...)
 这样我们就拿到了该项编译任务的信息
 
 ```
-    let compiler = webpack("./webpack.config.js") 
+    let webpack = require('webpack')
+    let webpackDevServer = require('webpack-dev-server')
+    let config = require("./webpack.config.js")
+    let compiler = webpack(config) 
     compiler.hooks.done.tap('vue-dev-serve',stats => {  
         //给编译项目设置事件钩子，done:编译完成时触发,stats 为编译项目的所有属性
         let statsData = stats.toJson()
