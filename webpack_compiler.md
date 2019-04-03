@@ -70,6 +70,6 @@ compiler.hooks.someHook.tap(...)
 ```
 取决于钩子类型不同，也可以在某些钩子上访问， tapAsync和typePromse
 
-[compiler 暴露的事件钩子](https://webpack.docschina.org/api/compiler/).
+[compiler 暴露的事件钩子](https://webpack.docschina.org/api/compiler/#%E4%BA%8B%E4%BB%B6%E9%92%A9%E5%AD%90).
 
     
