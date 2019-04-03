@@ -39,8 +39,14 @@
 
     compiler.run(callback)
  ```   
-同时webpack提供了新的API对项目进行监听
-给编译项目设置事件钩子，done:编译完成时触发,stats 为编译项目的所有属性 包括编译时间，项目文件和项目各模块等.
+同时webpack提供了新的API对项目进行监听,给编译项目设置事件钩子，
+生命周期钩子函数由compiler暴露，可以通过
+```
+compiler.hooks.someHook.tap(...)
+```
+访问
+*done:编译完成时触发*,
+*stats 为编译项目的所有属性 包括编译时间，项目文件和项目各模块等*.
 这样我们就拿到了该项编译任务的信息
 
 ```
@@ -61,6 +67,7 @@
         })
     })
 ```
+取决于钩子类型不同，也剋在某些钩子上访问， tapAsync和typePromse
 
 [compiler 暴露的事件钩子](https://webpack.docschina.org/api/compiler/).
 
