@@ -56,7 +56,7 @@ compiler.hooks.someHook.tap(...)
         //给编译项目设置事件钩子，done:编译完成时触发,stats 为编译项目的所有属性
         let statsData = stats.toJson()
         console.log((stats.endTime - stats.startTime)/1000 + 's') //编译时间
-        //console.log(statsData.chunks[0].modules)                //  项目各模块
+        //console.log(statsData.chunks[0].modules)                
         statsData.assets.forEach(asset => {
         //console.log(asset.name.split('?')[0])                 //文件
             if (asset.name.endsWith('.js') && asset.chunks && asset.chunks.length) {
