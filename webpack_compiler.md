@@ -39,8 +39,18 @@
     };
 
     compiler.run(callback)
- ```   
-同时webpack提供了新的API对项目进行监听,给编译项目设置事件钩子，
+```    
+
+但是你可能会遇到如下警告
+```   
+const compiler = webpack(webpackConfig);
+compiler.plugin('done', function(stat) {
+});
+警告：
+
+(node:63533) DeprecationWarning: Tapable.plugin is deprecated. Use new API on .hooks instead
+```
+这是你可以使用webpack提供了新的API对项目进行监听,给编译项目设置事件钩子，
 生命周期钩子函数由compiler暴露，可以通过
 ```
 compiler.hooks.someHook.tap(...)
@@ -58,7 +68,7 @@ compiler.hooks.someHook.tap(...)
         console.log((stats.endTime - stats.startTime)/1000 + 's') //编译时间
         //console.log(statsData.chunks[0].modules)                
         statsData.assets.forEach(asset => {
-        //console.log(asset.name.split('?')[0])                 //文件
+        //console.log(asset)                 //文件
             if (asset.name.endsWith('.js') && asset.chunks && asset.chunks.length) {
                 //console.log(asset)  //js文件
                 //asset.chunks.forEach(chunk => {
@@ -67,6 +77,15 @@ compiler.hooks.someHook.tap(...)
             }
         })
     })
+    let server = new webpackDevServer(compiler, {
+        historyApiFallback: true,
+        hot: true,
+        inline: true,
+        stats: 'errors-only',
+        host: "localhost",
+        port: "8080",
+    })
+    server.listen(8080)
 ```
 取决于钩子类型不同，也可以在某些钩子上访问， tapAsync和typePromse
 
